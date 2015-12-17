@@ -1,0 +1,144 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  .board {
+    background-color: $color5;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: block;
+
+    .table {
+      width: 75%;
+      height: 70%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      margin: auto;
+
+      .card {
+        -webkit-box-shadow: 5px 5px 3px 0 rgba(0,0,0,0.4);
+        -moz-box-shadow: 5px 5px 3px 0 rgba(0,0,0,0.4);
+        box-shadow: 5px 5px 3px 0 rgba(0,0,0,0.4);
+        width: 14%;
+        height: 90%;
+        background: #2c69a9;
+        cursor: pointer;
+        margin: 5px;
+        float: left;
+        border-radius: 5px;
+        border: 3px solid white;
+
+      }
+
+
+      .buildings {
+        height: 48%;
+        width: 100%;
+        margin-bottom: 2%;
+
+        .row {
+          width: 99%;
+          height: 100%;
+          border: 2px dashed lightgray;
+          display: none;
+          border-radius: 4px;
+
+          &.active {
+            display: block;
+          }
+
+          &.drop-hover {
+            padding: 2px;
+          }
+        }
+      }
+
+      .cards {
+        width: 100%;
+        height: 48%;
+        box-sizing: content-box;
+
+        .card {
+          &:hover {
+            background: #3175bc;
+            -webkit-box-shadow: 5px 5px 3px 0 rgba(0,0,0,0.5);
+            -moz-box-shadow: 5px 5px 3px 0 rgba(0,0,0,0.5);
+            box-shadow: 5px 5px 3px 0 rgba(0,0,0,0.5);
+          }
+
+        }
+
+      }
+
+    }
+
+
+    .player {
+      border: 2px solid white;
+      border-radius: 3px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      margin: auto;
+      &.race1 {
+        background-color: $color2;
+      }
+
+      &.race2 {
+        background-color: $color3;
+      }
+
+      &.race3 {
+        background-color: $color4;
+      }
+
+      &.race4 {
+        background-color: $color1;
+      }
+
+      &.me {
+        width: 60%;
+        height: 10%;
+        top: auto;
+        margin: 0 auto;
+        border-bottom: none;
+
+      }
+
+      &.left {
+        position: absolute;
+        width: 5%;
+        height: 60%;
+        right: auto;
+        margin: auto 0;
+        border-left: none;
+      }
+
+      &.right {
+        position: absolute;
+        width: 5%;
+        height: 60%;
+        left: auto;
+        margin: auto 0;
+        border-right: none;
+      }
+
+      &.top {
+        position: absolute;
+        width: 60%;
+        height: 10%;
+        bottom: auto;
+        margin: 0 auto;
+        border-top: none;
+      }
+    }
+  }
+}
