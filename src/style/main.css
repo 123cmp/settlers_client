@@ -1,0 +1,54 @@
+.body {
+}
+.board {
+    position: relative;
+}
+.table {
+    margin: 10vh auto;
+    width: 86vw;
+    height: 86vh;
+    background-color: rgb(243, 113, 107);
+    position: absolute;
+    top: -100vh;
+    left: -100vw;
+}
+.table-race1 {
+    background-color: rgb(122, 195, 243);
+    position: absolute;
+    top: -100vh;
+    left: 7vw;
+}
+.table-race1-show {
+    top: -100vh;
+    left: 7vw;
+}
+.race1,
+.race4 {
+    position: fixed;
+    width: 80vw;
+    height:  7vh;
+    margin: 0 auto;
+    background-color: rgb(213, 243, 140);
+    z-index: 10;
+}
+.race1 {
+    top: 0;
+}
+.race4 {
+    bottom: 0;
+}
+.race2,
+.race3 {
+    position: fixed;
+    height: 80vh;
+    width:  7vh;
+    margin: auto 0;
+    background-color: rgb(213, 243, 140);
+    z-index: 10;
+}
+.race2 {
+    left: 0;
+}
+.race3 {
+    right: 0;
+}
