@@ -1,18 +1,18 @@
+html {
+    overflow: hidden;
+}
 .body {
     padding: 0;
     margin: 0;
-    overflow: hidden;
 }
 .board {
     position: relative;
 }
 .table {
-    width: 86vw;
-    height: 86vh;
+    width: 90vw;
+    height: 90vh;
     background-color: rgb(243, 113, 107);
     position: absolute;
-    top: -100vh;
-    left: -100vw;
 }
 .table-race1 {
     background-color: rgb(122, 195, 243);
@@ -25,7 +25,7 @@
 
 }
 .table-show-race1 {
-    top: 7vh;
+    top: 5vh;
     left: 5vw;
 }
 .table-race2 {
@@ -34,12 +34,12 @@
     transition-duration: 1s;
 }
 .table-hide-race2 {
-    top: 7vh;
+    top: 5vh;
     left: -100vw;
 
 }
 .table-show-race2 {
-    top: 7vh;
+    top: 5vh;
     left: 5vw;
 }
 .table-race3 {
@@ -48,12 +48,12 @@
     transition-duration: 1s;
 }
 .table-hide-race3 {
-    top: 7vh;
+    top: 5vh;
     left: 100vw;
 
 }
 .table-show-race3 {
-    top: 7vh;
+    top: 5vh;
     left: 5vw;
 }
 .table-race4 {
@@ -67,16 +67,17 @@
 
 }
 .table-show-race4 {
-    top: 7vh;
+    top: 5vh;
     left: 5vw;
 }
 
 .race1,
 .race4 {
     position: fixed;
-    width: 80vw;
-    height:  7vh;
-    margin: 0 auto;
+    height: 5vh;
+    /*margin: 0 auto;*/
+    width: 50%;
+    left: 25%;
     background-color: rgb(213, 243, 140);
     z-index: 10;
 }
@@ -89,8 +90,9 @@
 .race2,
 .race3 {
     position: fixed;
-    height: 80vh;
-    width:  7vh;
+    height: 70%;
+    width:  5vw;
+    top: 15%;
     margin: auto 0;
     background-color: rgb(213, 243, 140);
     z-index: 10;
