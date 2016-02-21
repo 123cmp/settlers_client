@@ -7,7 +7,7 @@
     <script src="../node_modules/angular/angular.min.js"></script>
     <script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="app.js"></script>
-    <script src="../node_modules/jquery-ui/jquery-ui.js"></script>
+    <script src="../node_modules/jquery/jquery-2.2.0.min.js"></script>
     <!--<link rel="stylesheet" href="jquery-ui/themes/base/all.css">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -17,7 +17,7 @@
 
 
     <!--ng-repeat="race in raceNumber"-->
-    <div class="table table-race{{$index + 1}}" ng-class="tableRace{{$index + 1}}Class" ng-repeat="race in raceNumber">
+    <div class="table table-race{{$index + 1}} table-hide-race{{$index + 1}}" ng-repeat="race in raceNumber">
         <div class="buildings">
             <div class="row productions active">
                 <div class="card"></div>
@@ -39,10 +39,10 @@
         </div>
     </div>
 
-    <div class="player top race1" ng-click="showTableRace1"></div>
-    <div class="player left race2"></div>
-    <div class="player right race3"></div>
-    <div class="player me race4"></div>
+    <div class="player top race1" ng-click="showTableRace(1)"></div>
+    <div class="player left race2" ng-click="showTableRace(2)"></div>
+    <div class="player right race3" ng-click="showTableRace(3)"></div>
+    <div class="player me race4" ng-click="showTableRace(4)"></div>
 </div>
 
 

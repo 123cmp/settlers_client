@@ -2,8 +2,9 @@ var someGame = angular.module('someGame',[]);
 
 someGame.controller('boardController', function ($scope) {
     $scope.raceNumber = [1, 2, 3, 4];
-    $scope.showTableRace1 = function() {
-        $scope.tableRace1Class = 'table-race1-show';
+    $scope.showTableRace = function(index) {
+        console.info('.table-race' + index);
+        $('.table-race' + index).toggleClass('table-show-race'+index, 'table-hide-race'+index);
     };
 });
 someGame.factory('gameData', function(){
