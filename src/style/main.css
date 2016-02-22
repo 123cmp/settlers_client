@@ -24,23 +24,23 @@ html {
 }
 .table-hide-race1 {
     top: -100vh;
-    left: -20vw;
+    left: 5vw;
 }
 .table-show-race1 {
     top: 5vh;
-    left: -20vw;
+    left: 5vw;
 }
 .table-race2 {
-    background-color: rgb(85, 243, 133);
+    background-color: rgb(47, 243, 194);
     transition-property: left;
     transition-duration: 1s;
 }
 .table-hide-race2 {
-    top: -10vh;
+    top: 5vh;
     left: -100vw;
 }
 .table-show-race2 {
-    top: -10vh;
+    top: 5vh;
     left: 5vw;
 }
 .table-race3 {
@@ -49,12 +49,12 @@ html {
     transition-duration: 1s;
 }
 .table-hide-race3 {
-    top: -10vh;
-    left: 20vw;
+    top: 5vh;
+    left: 100vw;
 }
 .table-show-race3 {
-    top: -10vh;
-    left: -90vw;
+    top: 5vh;
+    left: 5vw;
 }
 .table-race4 {
     background-color: rgb(243, 105, 153);
@@ -62,12 +62,12 @@ html {
     transition-duration: 1s;
 }
 .table-hide-race4 {
-    top: 5vh;
-    left: -20vw;
+    top: 100vh;
+    left: 5vw;
 }
 .table-show-race4 {
-    top: -90vh;
-    left: -20vw;
+    top: 5vh;
+    left: 5vw;
 }
 
 .race1,
@@ -101,4 +101,7 @@ html {
 }
 .race3 {
     right: 0;
+}
+.active-race-bar {
+    background-color: rgb(42, 243, 33);
 }

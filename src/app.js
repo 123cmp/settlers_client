@@ -4,21 +4,20 @@ someGame.controller('boardController', function ($scope) {
     $scope.raceNumber = [1, 2, 3, 4];
     $scope.showTableRace = function(index) {
         console.info('.table-race' + index);
+        //siblings work uncorrect
+        //accordeon not work successful
+        $scope.clickedRace =  $('.race' + index);
+        $scope.clickedRace.toggleClass('active-race-bar');
+        $scope.clickedRace.siblings().removeClass('active-race-bar');
+
         $scope.clickedTable = $('.table-race' + index);
-        $scope.clickedTable.toggleClass('table-show-race'+index, 'table-hide-race'+index);
+        $scope.clickedTable.toggleClass('table-show-race'+index);
         $scope.clickedTable.siblings().removeClass("table-show-race1", "table-show-race2", "table-show-race3" ,"table-show-race4");
     };
 });
 someGame.factory('gameData', function(){
 
 });
-
-//accordeon
-//$(this)
-//    .next("p").slideToggle("slow")
-//    .siblings("p:visible").slideUp("slow");
-//$(this).toggleClass("active");
-//$(this).siblings("h3").removeClass("active");
 
 
 //$('.cards .card').draggable({
