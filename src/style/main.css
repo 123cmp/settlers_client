@@ -8,6 +8,9 @@ html {
 .board {
     position: relative;
 }
+/*возможно это костыли*/
+/*Костыльный лес*/
+/*Оставь надежду всяк сюда входящий*/
 .table {
     width: 90vw;
     height: 90vh;
@@ -21,12 +24,11 @@ html {
 }
 .table-hide-race1 {
     top: -100vh;
-    left: 5vw;
-
+    left: -20vw;
 }
 .table-show-race1 {
     top: 5vh;
-    left: 5vw;
+    left: -20vw;
 }
 .table-race2 {
     background-color: rgb(85, 243, 133);
@@ -34,12 +36,11 @@ html {
     transition-duration: 1s;
 }
 .table-hide-race2 {
-    top: 5vh;
+    top: -10vh;
     left: -100vw;
-
 }
 .table-show-race2 {
-    top: 5vh;
+    top: -10vh;
     left: 5vw;
 }
 .table-race3 {
@@ -48,13 +49,12 @@ html {
     transition-duration: 1s;
 }
 .table-hide-race3 {
-    top: 5vh;
-    left: 100vw;
-
+    top: -10vh;
+    left: 20vw;
 }
 .table-show-race3 {
-    top: 5vh;
-    left: 5vw;
+    top: -10vh;
+    left: -90vw;
 }
 .table-race4 {
     background-color: rgb(243, 105, 153);
@@ -62,13 +62,12 @@ html {
     transition-duration: 1s;
 }
 .table-hide-race4 {
-    top: 100vh;
-    left: 5vw;
-
+    top: 5vh;
+    left: -20vw;
 }
 .table-show-race4 {
-    top: 5vh;
-    left: 5vw;
+    top: -90vh;
+    left: -20vw;
 }
 
 .race1,
