@@ -12,10 +12,12 @@ html {
 /*Костыльный лес*/
 /*Оставь надежду всяк сюда входящий*/
 .table {
+    box-sizing: border-box;
+    padding: 10px;
     width: 90vw;
     height: 90vh;
     background-color: rgb(243, 113, 107);
-    position: absolute;
+    position: fixed;
 }
 .table-race1 {
     background-color: rgb(122, 195, 243);
@@ -104,4 +106,24 @@ html {
 }
 .active-race-bar {
     background-color: rgb(42, 243, 33);
+}
+.buildings {
+    display: inline-block;
+    background-color: #d0ce3f;
+    width: 75%;
+    height: 65%;
+    margin-bottom: 10px;
+}
+.cards {
+    display: inline-block;
+    background-color: #d0ce3f;
+    height: 30%;
+    width: 75%;
+}
+.resources {
+    width: 20%;
+    height: 100%;
+    background-color: #d0ce3f;
+    float: right;
+    margin-left: 10px;
 }
