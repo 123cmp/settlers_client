@@ -7,21 +7,15 @@
     <script src="../node_modules/angular/angular.min.js"></script>
     <script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="app.js"></script>
-    <script src="../node_modules/jquery/jquery-2.2.0.min.js"></script>
+    <!--<script src="../node_modules/jquery/jquery-2.2.0.min.js"></script>-->
     <!--<link rel="stylesheet" href="jquery-ui/themes/base/all.css">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body >
 
 <div class="board" ng-controller="boardController">
-    <!--<div class="race{{$index + 1}}"-->
-         <!--ng-repeat="race in raceNumber"-->
-         <!--ng-click="showTableRace($index + 1)"-->
-         <!--ng-class="{'top': $index === 0, 'left': $index === 1, 'right': $index === 2, 'bottom': $index === 3}">-->
-    <!--</div>-->
-    <!-- create separatly to use siblings-->
     <div class="tableMassive">
-        <div ng-repeat="tables in raceNumber" class="table table-race{{$index + 1}} table-hide-race{{$index + 1}}">
+        <div ng-repeat="tables in [0, 1, 2, 3]" class="table table-race{{$index}}" ng-class="{tableShow: playerActiveBar == $index}">
             <div class="resources">
                 <div></div>
             </div>
@@ -42,11 +36,11 @@
 
         </div>
     </div>
-
-    <div class="player top race1" ng-click="showTableRace(1)"> Race 1</div>
-    <div class="player left race2" ng-click="showTableRace(2)">Race 2</div>
-    <div class="player right race3" ng-click="showTableRace(3)">Race 3</div>
-    <div class="player me race4" ng-click="showTableRace(4)">Race 4 (you)</div>
+    <!--<div class="player top race{{$index}}" ng-repeat="playerBar in [0, 1, 2, 3]" ng-click="playerActiveBar = $index" ng-class="{activeBar: playerActiveBar == $index}">Race{{$index}}</div>-->
+    <div class="player top race0" ng-click="playerActiveBar = 0" ng-class="{activeBar: playerActiveBar == 0}"> Race 1</div>
+    <div class="player left race1" ng-click="playerActiveBar = 1" ng-class="{activeBar: playerActiveBar == 1}">Race 2</div>
+    <div class="player right race2" ng-click="playerActiveBar = 2" ng-class="{activeBar: playerActiveBar == 2}">Race 3</div>
+    <div class="player me race3" ng-click="playerActiveBar = 3" ng-class="{activeBar: playerActiveBar == 3}">Race 4 (you)</div>
 </div>
 
 <!--<script src="jquery/dist/jquery.min.js"></script>-->
