@@ -1,4 +1,22 @@
-var someGame = angular.module('someGame',[]);
+var someGame = angular.module('someGame',['ui.router']);
+
+someGame.config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise("menu");
+
+    $stateProvider
+        .state('menu', {
+            url: "/menu",
+            templateUrl: "templates/MenuTemplate.html"
+        })
+        .state('play', {
+            url: "/play",
+            templateUrl: "templates/BoardTemplate.html"
+        })
+});
+
+someGame.controller('mainController', function ($scope) {
+
+});
 
 someGame.controller('boardController', function ($scope) {
     $scope.playerActiveBar = 3;
@@ -18,6 +36,7 @@ someGame.controller('boardController', function ($scope) {
 someGame.factory('gameData', function(){
 
 });
+
 
 //$('.cards .card').draggable({
 //    revert: 'invalid'
