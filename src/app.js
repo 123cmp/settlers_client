@@ -15,28 +15,44 @@ someGame.config(function($stateProvider, $urlRouterProvider) {
 });
 
 someGame.controller('mainController', function ($scope) {
-
+    //$scope.myEl = angular.element(document.querySelectorAll(".card"));
+    //console.info($scope.myEl);
+    $scope.cards = [
+        {id: 1, race: 'rome', name: 'name1'},
+        {id: 2, race: 'japanese', name: 'name22'},
+        {id: 3, race: 'barbarian', name: 'name33'},
+        {id: 4, race: 'barbarian', name: 'name44'},
+        {id: 5, race: 'barbarian', name: 'name55'}
+    ];
+    $scope.setID = function(id) {
+        if ($scope.boardActiveCard == id) {
+            $scope.boardActiveCard = undefined;
+        }
+        else {
+            $scope.boardActiveCard = id;
+        }
+    };
 });
 
-someGame.controller('boardController', function ($scope) {
-    $scope.playerActiveBar = 3;
+someGame.controller('boardController', ['$scope',
+    function ($scope) {
+        $scope.playerActiveBar = 3;
+}]);
 
-    //$scope.showTableRace = function(index) {
-    //
-    //    //$scope.clickedRace =  $('.race' + index);
-    //    //$scope.clickedRace.toggleClass('active-race-bar');
-    //    //$scope.clickedRace.siblings().removeClass('active-race-bar');
-    //    //
-    //    //$scope.clickedTable = $('.table-race' + index);
-    //    //$scope.clickedTable.toggleClass('table-show-race'+index);
-    //    //$scope.clickedTable.siblings().removeClass("table-show-race1 table-show-race2 table-show-race3 table-show-race4");
-    //
-    //};
-});
 someGame.factory('gameData', function(){
 
 });
 
+someGame.directive('toggleClass', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            element.bind('click', function() {
+                element.toggleClass(attrs.toggleClass);
+            });
+        }
+    };
+});
 
 //$('.cards .card').draggable({
 //    revert: 'invalid'
