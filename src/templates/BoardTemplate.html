@@ -3,27 +3,53 @@
     <div class="tableMassive">
         <div ng-repeat="tables in [0, 1, 2, 3]" class="table table-race{{$index}}" ng-class="{tableShow: playerActiveBar == $index}">
             <div class="resources">
-                <div></div>
+                <div>
+                    {{table.resources}}
+                </div>
             </div>
             <div class="buildings">
-                <div class="row productions active"></div>
-                <div class="row features"></div>
-                <div class="row actions"></div>
+                <div class="row productions">
+                    <div class="card"
+                         ng-repeat="card in table.buildings.production"
+                         ng-click="setID(card.id)"
+                         ng-class="{'card-active': boardActiveCard == card.id }">
+                        {{card.name}}
+                    </div>
+                </div>
+                <div class="row feature">
+                    <div class="card"
+                         ng-repeat="card in table.buildings.feature"
+                         ng-click="setID(card.id)"
+                         ng-class="{'card-active': boardActiveCard == card.id }">
+                        {{card.name}}
+                    </div>
+                </div>
+                <div class="row action">
+                    <div class="card"
+                         ng-repeat="card in table.buildings.action"
+                         ng-click="setID(card.id)"
+                         ng-class="{'card-active': boardActiveCard == card.id }">
+                        {{card.name}}
+                    </div>
+                </div>
             </div>
             <div class="cards">
                 <div class="card"
-                     ng-repeat="card in cards"
+                     ng-repeat="card in table.hand"
                      ng-click="setID(card.id)"
-
                      ng-class="{'card-active': boardActiveCard == card.id }">
-
                     {{card.name}}
-                    <!-- active if has enough resources-->
-                    <!--<button class="build"></button>-->
-                    <!-- active if has sword-->
-                    <!--<button class="raze-it"></button>-->
-                    <!-- active if has tomato/gold-->
-                    <!--<button class="make-deal"></button>-->
+                    <div class="card-buttons" ng-if="boardActiveCard == card.id">
+                        <!-- active if has enough resources-->
+                        <button class="build-card button" ng-click="buildIt(card)"></button>
+                        <!-- active if has sword-->
+                        <button class="raze-card button"></button>
+                        <!-- active if has tomato/gold-->
+                        <button class="make-deal button"></button>
+                        <!-- active if has builded and card is active-->
+                        <button class="activate-card button"></button>
+                    </div>
+
                 </div>
             </div>
 

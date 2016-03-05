@@ -128,3 +128,18 @@ html {
 .card-active{
     transform: scale(1.2);
 }
+.button{
+    width: 100%;
+    height: 20px;
+    margin: 5px auto;
+}
+.card-buttons{
+    position: fixed;
+    overflow: visible;
+    bottom: 0;
+    right: 0;
+
+}
+.row{
+    height: 30%;
+}
