@@ -126,7 +126,7 @@ html {
     box-shadow: 0 0 15px 10px rgba(255, 215, 0, 0.69);
 }
 .card-active{
-    transform: scale(1.2);
+    transform: scale(1.4);
 }
 .button{
     width: 100%;
@@ -134,11 +134,13 @@ html {
     margin: 5px auto;
 }
 .card-buttons{
+    width: 15vw;
     position: fixed;
-    overflow: visible;
-    bottom: 0;
-    right: 0;
-
+    bottom: 6vh;
+    left: 6vw;
+    border: 2px solid black;
+    box-shadow: 0 0 15px 10px rgba(255, 215, 0, 0.69);
+    z-index: 999;
 }
 .row{
     height: 30%;

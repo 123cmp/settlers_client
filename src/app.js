@@ -15,13 +15,12 @@ someGame.config(function($stateProvider, $urlRouterProvider) {
 });
 
 someGame.controller('mainController', function ($scope) {
-
-    $scope.setID = function(id) {
-        if ($scope.boardActiveCard == id) {
+    $scope.setID = function(card) {
+        if ($scope.boardActiveCard == card) {
             $scope.boardActiveCard = undefined;
         }
         else {
-            $scope.boardActiveCard = id;
+            $scope.boardActiveCard = card;
         }
         console.log($scope.boardActiveCard);
     };
@@ -30,13 +29,43 @@ someGame.controller('mainController', function ($scope) {
 someGame.controller('boardController', ['$scope', 'gameData',
     function ($scope, gameData) {
         $scope.playerActiveBar = 3;
-        $scope.myBoard = {};
-
         //must create server on new session and make tabs active to active players
         $scope.tables = gameData.getRandomRaceMatrix();
+    }]);
+
+someGame.controller('tableController', ['$scope', 'gameData',
+    function ($scope, gameData) {
+
+        $scope.myBoard = {
+            playerId: ""
+        };
+        $scope.resMatrix = [];
+        $scope.dealProduction = {
+            wood: 0,
+            stone: 0,
+            tomato: 0,
+            gold: 0,
+            humans: 0,
+            sword: 0,
+            shield: 0,
+            foundation: 0,
+            exp: 0,
+            card: 0,
+            changeDealRes: function(res, type) {
+                for (key in $scope.dealProduction) {
+                    if (key == res && type == "add")
+                        $scope.dealProduction.key += 1;
+                    if (key == res && type == "remove")
+                        //cannot be less that zero
+                        $scope.dealProduction.key -= 1;
+                }
+            }
+        };
 
         //structure fo table
         $scope.table = {
+            id: "",
+            race: "",
             resources: {
                 wood: 99,
                 stone: 99,
@@ -49,26 +78,42 @@ someGame.controller('boardController', ['$scope', 'gameData',
                 exp: 0
             },
             buildings: {
+                trades: [],
                 production: [],
                 feature: [],
                 action: []
             },
             hand: {}
         };
-        //KOSTILI-VELOSIPEDI
-        $scope.resMatrix = ["wood", "stone", "tomato", "gold", "humans", "sword", "shield", "foundation", "exp"];
+        //not use. in development
+        //$scope.changeTableRes = function(res, count, operationType) {
+        //    for (key in $scope.table.resources) {
+        //        if (key == res && operationType == "add")
+        //            $scope.table.resources.key += count;
+        //        if (key == res && operationType == "remove") {
+        //            if ($scope.table.resources.key - count >= 0) {
+        //                $scope.table.resources.key -= count;
+        //                return true;
+        //            } else {
+        //                console.log('not enough '+ res);
+        //                return false;
+        //            }
+        //        }
+        //    }
+        //};
 
-        console.info($scope.table.resources);
+        //need rework this code. receive race of table
+        //$scope.table.race = "rome";
+        console.log($scope.table.race);
+
+        //create matrix to display resources keys
+        for (key in $scope.table.resources) {
+            $scope.resMatrix.push(key);
+        }
+        console.log($scope.resMatrix);
+
         //received from server
         $scope.table.hand = gameData.getCards();
-        console.log($scope.table.hand);
-        //$scope.table.hand = [
-        //    {id: 1, race: 'rome', type: "production", name: 'name1'},
-        //    {id: 2, race: 'japanese', type: "production", name: 'name22'},
-        //    {id: 3, race: 'barbarian', type: "feature", name: 'name33'},
-        //    {id: 4, race: 'barbarian', type: "feature", name: 'name44'},
-        //    {id: 5, race: 'barbarian', type: "action", name: 'name55'}
-        //];
 
         $scope.buildIt = function(card) {
             //watch for free foundation and resources
@@ -84,7 +129,6 @@ someGame.controller('boardController', ['$scope', 'gameData',
                     } else {
                         $scope.table.buildings.action.push($scope.table.hand.splice($scope.table.hand.indexOf(card), 1)[0]);
                     }
-
                     //take res from board
                     $scope.table.resources.wood -= card.cost.wood;
                     $scope.table.resources.stone -= card.cost.stone;
@@ -92,8 +136,9 @@ someGame.controller('boardController', ['$scope', 'gameData',
                     $scope.table.resources.foundation -= 1;
 
                     //deacticate card
-                    //UNKNOWN BUG - when build card called setID(id + 1)
-                    //$scope.boardActiveCard = undefined;
+                    $scope.setID();
+
+                    card.builded = true;
 
                     //if has building bonus - act it
                     if (card.hasOwnProperty('buildingBonus')) {
@@ -134,7 +179,48 @@ someGame.controller('boardController', ['$scope', 'gameData',
                 console.log('not enough sword');
             }
         };
-}]);
+
+        //restruct it
+        $scope.razeEnemyCard = function(targetCard) {
+            if (targetCard.builded && targetCard.raze) {
+                if ((targetCard.protect || targetCard.samurai ) && $scope.table.resources.sword >= 3) {
+                    $scope.table.resources.sword -= 3;
+                } else if (targetCard.protect && targetCard.samurai && $scope.table.resources.sword >= 4) {
+                    $scope.table.resources.sword -= 4;
+                } else if ((!targetCard.protect || !targetCard.samurai ) && $scope.table.resources.sword >= 2) {
+                    $scope.table.resources.sword -= 2;
+                } else {
+                    console.info('not enough sword');
+                }
+            }
+        };
+
+        $scope.makeDeal = function(card) {
+            if($scope.table.resources.tomato >= 1) {
+                $scope.table.resources.tomato -= 1;
+
+                //removed card from hand to trades
+                $scope.table.buildings.trades.push($scope.table.hand.splice($scope.table.hand.indexOf(card), 1)[0]);
+                $scope.dealProduction.changeDealRes(card.deal, "add");
+                console.log('dealed');
+            } else if($scope.table.resources.gold >= 1) {
+                console.log('ask to use gold');
+                if (answer == true) {
+
+                    $scope.table.resources.gold -= 1;
+
+                    //removed card from hand to trades
+                    $scope.table.buildings.trades.push($scope.table.hand.splice($scope.table.hand.indexOf(card), 1)[0]);
+                    $scope.dealProduction.changeDealRes(card.deal, "add");
+                    console.log('dealed');
+                }
+            } else {
+                console.info('not enough sword');
+            }
+            //deacticate card
+            $scope.setID();
+        };
+    }]);
 
 someGame.directive('toggleClass', function() {
     return {
@@ -148,18 +234,21 @@ someGame.directive('toggleClass', function() {
 });
 
 someGame.factory('gameData', function(){
+    //THIS DATA MUST TAKEN FROM SERV
     var raceArray = ["barbarian","rome","japanese","egypt"];
-    function getCard(id) {
+    function getCard(id, type) {
         return {
             id: id,      //unique for every card. Set at server
             race: "japanese",
             name: "NINJAS",
-            type: "action",
+            type: type,
             color: "pink",
             copyInDeck: 2,
             deal: "tomato",
             protect: false,
             samurai: false,
+            builded: false,
+            buildedBy: "",
             cost: {
                 wood: 2,
                 stone: 2,
@@ -201,12 +290,12 @@ someGame.factory('gameData', function(){
     return {
         getCards: function() {
             return [
-                getCard(1),
-                getCard(2),
-                getCard(3),
-                getCard(4),
-                getCard(5),
-                getCard(6)
+                getCard(1, "production"),
+                getCard(2, "production"),
+                getCard(3, "feature"),
+                getCard(4, "feature"),
+                getCard(5, "action"),
+                getCard(6, "action")
             ];
         },
         //Fisher-Yates Shuffle
