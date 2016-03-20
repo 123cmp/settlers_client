@@ -1,147 +1,147 @@
 html {
-    overflow: hidden;
+  overflow: hidden;
 }
 .body {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 .board {
-    position: relative;
+  position: relative;
 }
-/*возможно это костыли*/
-/*Костыльный лес*/
-/*Оставь надежду всяк сюда входящий*/
+/*ГўГ®Г§Г¬Г®Г¦Г­Г® ГЅГІГ® ГЄГ®Г±ГІГ»Г«ГЁ*/
+/*ГЉГ®Г±ГІГ»Г«ГјГ­Г»Г© Г«ГҐГ±*/
+/*ГЋГ±ГІГ ГўГј Г­Г Г¤ГҐГ¦Г¤Гі ГўГ±ГїГЄ Г±ГѕГ¤Г  ГўГµГ®Г¤ГїГ№ГЁГ©*/
 .table {
-    box-sizing: border-box;
-    padding: 10px;
-    width: 90vw;
-    height: 90vh;
-    background-color: rgb(243, 113, 107);
-    position: fixed;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 90vw;
+  height: 90vh;
+  background-color: rgb(243, 113, 107);
+  position: fixed;
 }
 .table-race0 {
-    background-color: rgba(158, 187, 219, 1);
-    transition-property: top;
-    transition-duration: 1s;
-    top: -100vh;
-    left: 5vw;
+  background-color: rgba(158, 187, 219, 1);
+  transition-property: top;
+  transition-duration: 1s;
+  top: -100vh;
+  left: 5vw;
 }
 .table-race1 {
-    background-color: rgb(126, 243, 186);
-    transition-property: left;
-    transition-duration: 1s;
-    top: 5vh;
-    left: -100vw;
+  background-color: rgb(126, 243, 186);
+  transition-property: left;
+  transition-duration: 1s;
+  top: 5vh;
+  left: -100vw;
 }
 .table-race2 {
-    background-color: rgb(243, 231, 173);
-    transition-property: left;
-    transition-duration: 1s;
-    top: 5vh;
-    left: 100vw;
+  background-color: rgb(243, 231, 173);
+  transition-property: left;
+  transition-duration: 1s;
+  top: 5vh;
+  left: 100vw;
 }
 
 .table-race3 {
-    background-color: rgb(243, 180, 203);
-    transition-property: top;
-    transition-duration: 1s;
-    top: 100vh;
-    left: 5vw;
+  background-color: rgb(243, 180, 203);
+  transition-property: top;
+  transition-duration: 1s;
+  top: 100vh;
+  left: 5vw;
 }
 
 .race0,
 .race3 {
-    position: fixed;
-    height: 5vh;
-    /*margin: 0 auto;*/
-    width: 50%;
-    left: 25%;
-    background-color: rgb(213, 243, 140);
-    z-index: 10;
+  position: fixed;
+  height: 5vh;
+  /*margin: 0 auto;*/
+  width: 50%;
+  left: 25%;
+  background-color: rgb(213, 243, 140);
+  z-index: 10;
 }
 .race0 {
-    top: 0;
+  top: 0;
 }
 .race3 {
-    bottom: 0;
+  bottom: 0;
 }
 .race1,
 .race2 {
-    position: fixed;
-    height: 70%;
-    width:  5vw;
-    top: 15%;
-    margin: auto 0;
-    background-color: rgb(213, 243, 140);
-    z-index: 10;
+  position: fixed;
+  height: 70%;
+  width:  5vw;
+  top: 15%;
+  margin: auto 0;
+  background-color: rgb(213, 243, 140);
+  z-index: 10;
 }
 .race1 {
-    left: 0;
+  left: 0;
 }
 .race2 {
-    right: 0;
+  right: 0;
 }
 .buildings {
-    box-sizing: border-box;
-    padding: 10px;
-    display: inline-block;
-    border: 3px solid #d0ce3f;
-    width: 75%;
-    height: 70%;
-    margin-bottom: 10px;
+  box-sizing: border-box;
+  padding: 10px;
+  display: inline-block;
+  border: 3px solid #d0ce3f;
+  width: 75%;
+  height: 70%;
+  margin-bottom: 10px;
 }
 .cards {
-    box-sizing: border-box;
-    padding: 10px;
-    display: inline-block;
-    border: 3px solid #d0ce3f;
-    height: 23%;
-    width: 75%;
+  box-sizing: border-box;
+  padding: 10px;
+  display: inline-block;
+  border: 3px solid #d0ce3f;
+  height: 23%;
+  width: 75%;
 }
 .resources {
-    width: 20%;
-    height: 100%;
-    border: 3px solid #d0ce3f;
-    float: left;
-    margin-left: 10px;
+  width: 20%;
+  height: 100%;
+  border: 3px solid #d0ce3f;
+  float: left;
+  margin-left: 10px;
 }
 .tableShow {
-    top: 5vh;
-    left: 5vw;
+  top: 5vh;
+  left: 5vw;
 }
 .activeBar {
-    background-color: rgb(42, 243, 33);
+  background-color: rgb(42, 243, 33);
 }
 .card{
-    height: 100%;
-    width: 10vw;
-    border: 2px solid black;
-    display: inline-block;
-    margin-right: 10px;
-    background-color: rgb(243, 201, 238);
-    transition-property: transform;
-    transition-duration: .5s;
+  height: 100%;
+  width: 10vw;
+  border: 2px solid black;
+  display: inline-block;
+  margin-right: 10px;
+  background-color: rgb(243, 201, 238);
+  transition-property: transform;
+  transition-duration: .5s;
 }
 .card:hover{
-    box-shadow: 0 0 15px 10px rgba(255, 215, 0, 0.69);
+  box-shadow: 0 0 15px 10px rgba(255, 215, 0, 0.69);
 }
 .card-active{
-    transform: scale(1.4);
+  transform: scale(1.4);
 }
 .button{
-    width: 100%;
-    height: 20px;
-    margin: 5px auto;
+  width: 100%;
+  height: 20px;
+  margin: 5px auto;
 }
 .card-buttons{
-    width: 15vw;
-    position: fixed;
-    bottom: 6vh;
-    left: 6vw;
-    border: 2px solid black;
-    box-shadow: 0 0 15px 10px rgba(255, 215, 0, 0.69);
-    z-index: 999;
+  width: 15vw;
+  position: fixed;
+  bottom: 6vh;
+  left: 6vw;
+  border: 2px solid black;
+  box-shadow: 0 0 15px 10px rgba(255, 215, 0, 0.69);
+  z-index: 999;
 }
 .row{
-    height: 30%;
+  height: 30%;
 }

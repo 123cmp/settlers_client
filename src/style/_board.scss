@@ -1,3 +1,6 @@
+html {
+  overflow: hidden;
+
 body {
   width: 100vw;
   height: 100vh;
@@ -5,49 +8,113 @@ body {
   padding: 0;
 
   .board {
-    background-color: $color5;
-    width: 100%;
-    height: 100%;
     position: relative;
-    display: block;
 
     .table {
-      width: 75%;
-      height: 70%;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      top: 0;
-      margin: auto;
+
+      box-sizing: border-box;
+      padding: 10px;
+      width: 90vw;
+      height: 90vh;
+      background-color: $color2;
+      position: fixed;
+
+      .resources {
+        width: 20%;
+        height: 100%;
+        border: 3px solid #d0ce3f;
+        float: left;
+        margin-left: 10px;
+      }
+
+      &.tableShow {
+        top: 5vh;
+        left: 5vw;
+      }
+
+      .card-buttons {
+        width: 15vw;
+        position: fixed;
+        bottom: 6vh;
+        left: 6vw;
+        border: 2px solid black;
+        box-shadow: 0 0 15px 10px rgba(255, 215, 0, 0.69);
+        z-index: 999;
+
+
+        .button{
+          width: 100%;
+          height: 20px;
+          margin: 5px auto;
+        }
+      }
+
+      &.table-race0 {
+        background-color: $color5;
+        transition-property: top;
+        transition-duration: 1s;
+        top: -100vh;
+        left: 5vw;
+      }
+
+      &.table-race1 {
+        background-color: $color1;
+        transition-property: left;
+        transition-duration: 1s;
+        top: 5vh;
+        left: -100vw;
+      }
+
+      &.table-race2 {
+        background-color: $color7;
+        transition-property: left;
+        transition-duration: 1s;
+        top: 5vh;
+        left: 100vw;
+      }
+
+      &.table-race3 {
+        background-color: $color2;
+        transition-property: top;
+        transition-duration: 1s;
+        top: 100vh;
+        left: 5vw;
+      }
+
 
       .card {
-        -webkit-box-shadow: 5px 5px 3px 0 rgba(0,0,0,0.4);
-        -moz-box-shadow: 5px 5px 3px 0 rgba(0,0,0,0.4);
-        box-shadow: 5px 5px 3px 0 rgba(0,0,0,0.4);
-        width: 14%;
-        height: 90%;
-        background: #2c69a9;
-        cursor: pointer;
-        margin: 5px;
-        float: left;
-        border-radius: 5px;
-        border: 3px solid white;
+
+        height: 100%;
+        width: 10vw;
+        border: 2px solid black;
+        display: inline-block;
+        margin-right: 10px;
+        background-color: rgb(243, 201, 238);
+        transition-property: transform;
+        transition-duration: .5s;
+
+        &:hover{
+          box-shadow: 0 0 15px 10px rgba(255, 215, 0, 0.69);
+          -webkit-box-shadow: 0 0 15px 10px rgba(255, 215, 0, 0.69);
+          -moz-box-shadow: 0 0 15px 10px rgba(255, 215, 0, 0.69);
+        }
 
       }
 
 
+
+
       .buildings {
-        height: 48%;
-        width: 100%;
-        margin-bottom: 2%;
+        box-sizing: border-box;
+        padding: 10px;
+        display: inline-block;
+        border: 3px solid #d0ce3f;
+        width: 75%;
+        height: 70%;
+        margin-bottom: 10px;
 
         .row {
-          width: 99%;
-          height: 100%;
-          border: 2px dashed lightgray;
-          display: none;
-          border-radius: 4px;
+          height: 30%;
 
           &.active {
             display: block;
@@ -60,9 +127,12 @@ body {
       }
 
       .cards {
-        width: 100%;
-        height: 48%;
-        box-sizing: content-box;
+        box-sizing: border-box;
+        padding: 10px;
+        display: inline-block;
+        border: 3px solid #d0ce3f;
+        height: 23%;
+        width: 75%;
 
         .card {
           &:hover {
@@ -72,7 +142,11 @@ body {
             box-shadow: 5px 5px 3px 0 rgba(0,0,0,0.5);
           }
 
+          &.card-active{
+            transform: scale(1.4);
+          }
         }
+
 
       }
 
@@ -88,20 +162,42 @@ body {
       right: 0;
       top: 0;
       margin: auto;
-      &.race1 {
-        background-color: $color2;
+
+      &.activeBar {
+        background-color: rgb(42, 243, 33);
       }
 
-      &.race2 {
-        background-color: $color3;
-      }
-
+      &.race0,
       &.race3 {
-        background-color: $color4;
+        position: fixed;
+        height: 5vh;
+        /*margin: 0 auto;*/
+        width: 50%;
+        left: 25%;
+        background-color: rgb(213, 243, 140);
+        z-index: 10;
       }
-
-      &.race4 {
-        background-color: $color1;
+      &.race0 {
+        top: 0;
+      }
+      &.race3 {
+        bottom: 0;
+      }
+      &.race1,
+      &.race2 {
+        position: fixed;
+        height: 70%;
+        width:  5vw;
+        top: 15%;
+        margin: auto 0;
+        background-color: rgb(213, 243, 140);
+        z-index: 10;
+      }
+      &.race1 {
+        left: 0;
+      }
+      &.race2 {
+        right: 0;
       }
 
       &.me {
@@ -141,4 +237,5 @@ body {
       }
     }
   }
+}
 }

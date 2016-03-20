@@ -1,10 +1,7 @@
 var gulp = require("gulp"),
-    babel = require("gulp-babel"),
     os = require('os'),
-    changed = require('gulp-changed'),
     browserSync = require('browser-sync').create(),
     sass = require('gulp-sass'),
-    opn = require('opn'),
     watch = require('gulp-watch'),
     clean = require('gulp-clean');
 //
@@ -27,14 +24,11 @@ gulp.task("compile", function () {
     gulp.src("bower_components/**/*")
         .pipe(gulp.dest("build"));
     return gulp.src("src/**/*.js")
-        .pipe(changed('src/**/*.js'))
-        .pipe(babel({
-            presets: ['es2015']
-        }))
         .pipe(gulp.dest("build"));
 });
 
 gulp.task('start', ['compile', 'sass'], function () {
+
     browserSync.init({
         server: {
             baseDir: "./build/"
@@ -52,6 +46,21 @@ gulp.task('watch', function() {
 
 gulp.task('build', ['start'], function() {
     gulp.start('watch');
+});
+
+gulp.task('local', function() {
+    gulp.src('src/style/main.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('src/style/'));
+
+    gulp.src("bower_components/**/*")
+        .pipe(gulp.dest("src/bower_components/"));
+
+    browserSync.init({
+        server: {
+            baseDir: "./src/"
+        }
+    });
 });
 
 gulp.task('default', ['build']);
